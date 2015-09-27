@@ -86,13 +86,6 @@ message "-----> Dart cmd found at $DART_BIN"
 CAN_DART_RUN=`/app/dart-sdk/bin/dart --version`
 message "-----> Dart reports version: $CAN_DART_RUN"
 
-
-message "-----> Add Dart To Path"
-export PATH=$PATH:/app/dart-sdk/bin
-
-message "-----> symlink sass"
-ln -s /app/.heroku/sassc/bin/sassc /app/.heroku/sassc/bin/sass
-
 cd $BUILD_DIR
 
 for filename in `find . -name pubspec.yaml | grep -v dart-sdk | grep -v pub-cache`; do
@@ -125,3 +118,6 @@ done
 # $BUILD_DIR in the first place? because we need symlinks setup correctly.
 cp -R $PUB_CACHE $BUILD_DIR/pub-cache
 message `ls -l $BUILD_DIR/pub-cache`
+
+message "-----> Add Dart To Path"
+export PATH=$PATH:/app/dart-sdk/bin
