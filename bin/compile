@@ -89,7 +89,7 @@ message "-----> Dart reports version: $CAN_DART_RUN"
 cd $BUILD_DIR
 
 message "-----> Add Dart To Path"
-export PATH=$PATH:/app/dart-sdk/bin
+echo "export PATH=$PATH:/app/dart-sdk/bin"
 
 for filename in `find . -name pubspec.yaml | grep -v dart-sdk | grep -v pub-cache`; do
     pub_dir=`dirname $filename`
