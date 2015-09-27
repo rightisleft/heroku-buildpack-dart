@@ -91,7 +91,7 @@ message "-----> Add Dart To Path"
 export PATH=$PATH:/app/dart-sdk/bin
 
 message "-----> symlink sass"
-ln -s /app/.heroku/sassc/bin/sassc /usr/bin/sass
+ln -s /app/.heroku/sassc/bin/sassc /app/.heroku/sassc/bin/sass
 
 cd $BUILD_DIR
 
