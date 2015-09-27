@@ -86,6 +86,11 @@ message "-----> Dart cmd found at $DART_BIN"
 CAN_DART_RUN=`/app/dart-sdk/bin/dart --version`
 message "-----> Dart reports version: $CAN_DART_RUN"
 
+message "adding to path..."
+echo "  PATH: $PATH:/app/dart-sdk/bin"
+message "added to path..."
+
+
 cd $BUILD_DIR
 
 for filename in `find . -name pubspec.yaml | grep -v dart-sdk | grep -v pub-cache`; do
