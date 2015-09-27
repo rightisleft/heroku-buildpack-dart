@@ -86,10 +86,12 @@ message "-----> Dart cmd found at $DART_BIN"
 CAN_DART_RUN=`/app/dart-sdk/bin/dart --version`
 message "-----> Dart reports version: $CAN_DART_RUN"
 
-message "adding to path..."
-echo "  PATH: $PATH:/app/dart-sdk/bin"
-message "added to path..."
 
+message "-----> Add Dart To Path"
+export PATH=$PATH:/app/dart-sdk/bin
+
+message "-----> symlink sass"
+ln -s /app/.heroku/sassc/bin/sassc /usr/bin/sass
 
 cd $BUILD_DIR
 
