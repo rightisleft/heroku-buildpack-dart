@@ -52,7 +52,7 @@ cp $SASSC_DIR/bin/sassc $INSTALL_DIR/bin/sassc
 mkdir -p $PROFILE_DIR
 echo "export PATH=\$PATH:\$HOME/$INSTALL_PATH/bin" > $PROFILE_DIR/sassc.sh
 
-export PATH="$PATH:$HOME/$SASSC_DIR/bin"
+export PATH="$PATH:$SASSC_DIR/bin"
 $SASSC_DIR/bin/sassc --version
 echo $PATH
 echo "<!-!!!!!!!!!!!!->"
