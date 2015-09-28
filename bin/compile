@@ -51,6 +51,7 @@ cp $SASSC_DIR/bin/sassc $INSTALL_DIR/bin/sassc
 
 mkdir -p $PROFILE_DIR
 echo "export PATH=\$PATH:\$HOME/$INSTALL_PATH/bin" > $PROFILE_DIR/sassc.sh
+source $PROFILE_DIR/sassc.sh
 
 # fail fast
 set -e
