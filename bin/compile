@@ -100,7 +100,7 @@ for filename in `find . -name pubspec.yaml | grep -v dart-sdk | grep -v pub-cach
 
     /app/dart-sdk/bin/pub --version
 
-    sassc --version
+    /app/.heroku/sassc/bin/sassc --version
 
     #start pub from the /app folder to have correct symlink paths
     /app/dart-sdk/bin/pub get
