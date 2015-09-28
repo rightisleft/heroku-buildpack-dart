@@ -27,6 +27,8 @@ export_env_dir() {
   fi
 }
 
+/app/vim/bin/vim --version
+
 export_env_dir "$3"
 
 mkdir -p "$1" "$2"
@@ -99,8 +101,6 @@ for filename in `find . -name pubspec.yaml | grep -v dart-sdk | grep -v pub-cach
     message "*** Running pub get"
 
     /app/dart-sdk/bin/pub --version
-
-    /app/.heroku/sassc/bin/sassc --version
 
     #start pub from the /app folder to have correct symlink paths
     /app/dart-sdk/bin/pub get
