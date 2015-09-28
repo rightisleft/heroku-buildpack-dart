@@ -1,6 +1,57 @@
 #!/usr/bin/env bash
 # bin/compile <build-dir> <cache-dir> <env-dir>
 
+#!/bin/bash
+
+echo "-----> Install sassc v3.1.0"
+
+BUILD_DIR=$1
+CACHE_DIR="$2/sassc"
+LIBSASS_DIR="$CACHE_DIR/libsass"
+SASSC_DIR="$CACHE_DIR/sassc"
+INSTALL_PATH=".heroku/sassc"
+INSTALL_DIR="$BUILD_DIR/$INSTALL_PATH"
+PROFILE_DIR="$BUILD_DIR/.profile.d"
+
+indent() {
+    sed -u 's/^/       /'
+}
+
+printlog() {
+    echo $1 | indent
+}
+
+run_silent() {
+    $1 > /dev/null 2>&1
+}
+
+mkdir -p $CACHE_DIR
+
+if [[ ! -d "$LIBSASS_DIR/.git" ]]; then
+    printlog "Downloading libsass"
+    run_silent "git clone https://github.com/sass/libsass.git $LIBSASS_DIR"
+fi
+cd $LIBSASS_DIR
+run_silent "git checkout 3.1.0"
+printlog "Building libsass"
+run_silent "make static"
+
+if [[ ! -d "$SASSC_DIR/.git" ]]; then
+    printlog "Downloading sassc"
+    run_silent "git clone https://github.com/sass/sassc.git $SASSC_DIR"
+fi
+cd $SASSC_DIR
+run_silent "git checkout 3.1.0"
+printlog "Building sassc"
+SASS_LIBSASS_PATH=$LIBSASS_DIR make build-static
+
+printlog "Installing sassc"
+mkdir -p $INSTALL_DIR/bin
+cp $SASSC_DIR/bin/sassc $INSTALL_DIR/bin/sassc
+
+mkdir -p $PROFILE_DIR
+echo "export PATH=\$PATH:\$HOME/$INSTALL_PATH/bin" > $PROFILE_DIR/sassc.sh
+
 # fail fast
 set -e
 #set -x
