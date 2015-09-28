@@ -78,8 +78,6 @@ export_env_dir() {
   fi
 }
 
-/app/vim/bin/vim --version
-
 export_env_dir "$3"
 
 mkdir -p "$1" "$2"
