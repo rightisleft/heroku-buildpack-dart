@@ -52,10 +52,10 @@ cp $SASSC_DIR/bin/sassc $INSTALL_DIR/bin/sassc
 mkdir -p $PROFILE_DIR
 echo "export PATH=\$PATH:\$HOME/$INSTALL_PATH/bin" > $PROFILE_DIR/sassc.sh
 
+printlog "Acquiring runtime path"
 export PATH="$PATH:$SASSC_DIR/bin"
-$SASSC_DIR/bin/sassc --version
-echo $PATH
-echo "<!-!!!!!!!!!!!!->"
+
+printlog "Ensuring we have sassc"
 sassc --version
 
 # fail fast
@@ -147,6 +147,11 @@ cd $BUILD_DIR
 
 message "-----> Add Dart To Path"
 echo "export PATH=$PATH:/app/dart-sdk/bin"
+
+message "-----> Check Env Variables: PORT, DART_ENV, INDEX_TRANSFORMER_TAG"
+echo $PORT
+echo $DART_ENV
+echo $INDEX_TRANSFORMER_TAG
 
 for filename in `find . -name pubspec.yaml | grep -v dart-sdk | grep -v pub-cache`; do
     pub_dir=`dirname $filename`
