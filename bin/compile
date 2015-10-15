@@ -59,8 +59,8 @@ echo "export PATH=\$PATH:\$HOME/$INSTALL_PATH/bin" > $PROFILE_DIR/sassc.sh
 printlog "Acquiring runtime path"
 export PATH="$PATH:$SASSC_DIR/bin"
 
-printlog "Ensuring we have sassc"
-sassc --version
+printlog "Ensuring we have sass"
+sass --version
 
 # fail fast
 set -e
