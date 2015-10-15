@@ -48,6 +48,7 @@ SASS_LIBSASS_PATH=$LIBSASS_DIR make build-static
 printlog "Installing sassc"
 mkdir -p $INSTALL_DIR/bin
 cp $SASSC_DIR/bin/sassc $INSTALL_DIR/bin/sassc
+cp $SASSC_DIR/bin/sassc $INSTALL_DIR/bin/sass
 
 mkdir -p $PROFILE_DIR
 echo "export PATH=\$PATH:\$HOME/$INSTALL_PATH/bin" > $PROFILE_DIR/sassc.sh
