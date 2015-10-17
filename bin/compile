@@ -49,7 +49,6 @@ printlog "Installing sassc to:"
 echo $PATH
 
 mkdir -p $INSTALL_DIR/bin
-cp $SASSC_DIR/bin/sassc $SASSC_DIR/bin/sass
 cp $SASSC_DIR/bin/sassc $INSTALL_DIR/bin/sassc
 
 
@@ -59,8 +58,8 @@ echo "export PATH=\$PATH:\$HOME/$INSTALL_PATH/bin" > $PROFILE_DIR/sassc.sh
 printlog "Acquiring runtime path"
 export PATH="$PATH:$SASSC_DIR/bin"
 
-printlog "Ensuring we have sass"
-sass --version
+printlog "Ensuring we have sassc"
+sassc --version
 
 # fail fast
 set -e
