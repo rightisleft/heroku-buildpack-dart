@@ -156,7 +156,16 @@ echo $PORT
 echo $DART_ENV
 echo $INDEX_TRANSFORMER_TAG
 
-for filename in `find . -name pubspec.yaml | grep -v dart-sdk | grep -v pub-cache`; do
+DART_FIND_DIR=.
+if [ -z ${DART_BUILD_DIR_OVERRIDE+x} ];
+then
+    echo "DART_BUILD_DIR_OVERRIDE is unset";
+else
+    echo "DART_BUILD_DIR_OVERRIDE is set to '$DART_BUILD_DIR_OVERRIDE'";
+    DART_FIND_DIR=$DART_BUILD_DIR_OVERRIDE
+fi
+
+for filename in `find $DART_FIND_DIR -name pubspec.yaml | grep -v dart-sdk | grep -v pub-cache`; do
     pub_dir=`dirname $filename`
     message "*** Found pubspec.yaml in $BUILD_DIR/$pub_dir"
     cd $BUILD_DIR/$pub_dir
